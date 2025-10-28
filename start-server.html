@@ -1,0 +1,52 @@
+<!-- Open this file to see instructions for running a local server -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>How to Run Cortex Club Website</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-left: 4px solid #002147;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cortex Club Website - Running Instructions</h1>
+    
+    <h2>Why a Local Server?</h2>
+    <p>The events page loads JSON files dynamically, which requires a web server. Opening HTML files directly (file://) may not work properly.</p>
+    
+    <h2>Option 1: Python (Easiest)</h2>
+    <p>Open terminal in the project folder and run:</p>
+    <pre>python3 -m http.server 8000</pre>
+    <p>Then visit: <code>http://localhost:8000</code></p>
+    
+    <h2>Option 2: Node.js</h2>
+    <p>Install http-server globally:</p>
+    <pre>npm install -g http-server</pre>
+    <p>Then run:</p>
+    <pre>http-server -p 8000</pre>
+    <p>Then visit: <code>http://localhost:8000</code></p>
+    
+    <h2>Option 3: VS Code Live Server</h2>
+    <p>Install the "Live Server" extension in VS Code, then right-click on <code>index.html</code> and select "Open with Live Server"</p>
+    
+    <h2>Or Test Without Server</h2>
+    <p>You can still view the site at <code>file:///</code> but the events won't load. The typewriter effect and other static content will still work.</p>
+</body>
+</html>
+

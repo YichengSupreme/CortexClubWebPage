@@ -258,15 +258,20 @@
         document.getElementById('eventSearch').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const activeContainer = document.getElementById('upcomingEvents').style.display === 'none' ? 'pastEvents' : 'upcomingEvents';
-            const grid = document.getElementById(activeContainer === 'upcomingEvents' ? 'upcomingGrid' : 'pastGrid');
+            const container = document.getElementById(activeContainer);
             
-            Array.from(grid.children).forEach(card => {
-                const eventText = card.getAttribute('data-event');
-                if (eventText.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            // Get all grids in the active container (including nested ones)
+            const grids = container.querySelectorAll('.events-grid');
+            
+            grids.forEach(grid => {
+                Array.from(grid.children).forEach(card => {
+                    const eventText = card.getAttribute('data-event');
+                    if (eventText.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
             });
         });
 

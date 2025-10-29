@@ -124,6 +124,19 @@ body {
     padding: 3rem;
     max-width: 800px;
     position: relative;
+    z-index: 10;
+    margin-right: auto;
+    margin-left: 5%;
+}
+
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hero-content::before {
@@ -137,7 +150,7 @@ body {
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: normal;
     margin-bottom: 2rem;
     line-height: 1.3;
@@ -146,7 +159,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 3rem;
     opacity: 0.8;
     line-height: 2;
@@ -306,7 +319,7 @@ body {
 
 .event-card {
     background: transparent;
-    border: 2px solid var(--white);
+    border: 2px solid var(--black);
     padding: 2.5rem;
     transition: var(--transition);
     position: relative;
@@ -337,13 +350,13 @@ body {
 .date-day {
     font-size: 3rem;
     line-height: 1;
-    color: var(--white);
+    color: var(--black);
 }
 
 .date-month {
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--black);
     opacity: 0.7;
     margin-top: 0.5rem;
 }
@@ -351,7 +364,7 @@ body {
 .date-year {
     font-size: 0.8rem;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--black);
     opacity: 0.5;
     margin-top: 0.3rem;
     letter-spacing: 1px;
@@ -362,17 +375,18 @@ body {
     margin-bottom: 1.5rem;
     font-weight: normal;
     letter-spacing: 1px;
+    color: var(--black);
 }
 
 .event-card p {
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 1.5rem;
     line-height: 1.8;
     opacity: 0.8;
 }
 
 .event-link {
-    color: var(--white);
+    color: var(--black);
     text-decoration: none;
     font-weight: normal;
     display: inline-block;
@@ -388,6 +402,23 @@ body {
 
 .event-link::after {
     content: ' >>';
+}
+
+/* Event cards in dark sections */
+.section-dark .event-card {
+    border: 2px solid var(--white);
+}
+
+.section-dark .date-day,
+.section-dark .date-month,
+.section-dark .date-year {
+    color: var(--white);
+}
+
+.section-dark .event-card h3,
+.section-dark .event-card p,
+.section-dark .event-link {
+    color: var(--white);
 }
 
 /* Committee Section */
@@ -574,7 +605,7 @@ body {
 
 .sponsor-card {
     background: var(--white);
-    border: 2px solid var(--white);
+    border: 2px solid var(--black);
     padding: 2rem;
     text-align: center;
     transition: var(--transition);
@@ -638,11 +669,11 @@ body {
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     .hero-subtitle {
-        font-size: 0.95rem;
+        font-size: 1.425rem;
     }
 
     .hero-buttons {
@@ -695,11 +726,11 @@ body {
     }
 
     .hero-title {
-        font-size: 1.5rem;
+        font-size: 2.25rem;
     }
 
     .hero-subtitle {
-        font-size: 0.85rem;
+        font-size: 1.275rem;
     }
 
     .btn {
@@ -854,6 +885,36 @@ body {
 @keyframes blink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
+}
+
+/* Map Container */
+.map-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.map-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 350px;
+    border: 2px solid var(--black);
+    transition: var(--transition);
+}
+
+.map-wrapper:hover iframe {
+    border-color: var(--grey);
+}
+
+@media (max-width: 768px) {
+    .map-wrapper iframe {
+        height: 250px;
+    }
 }
 
 /* Additional utilities */

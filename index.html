@@ -31,6 +31,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
+        <div id="hero-canvas"></div>
         <div class="container hero-content">
             <h2 class="hero-title" id="hero-title"></h2>
             <p class="hero-subtitle" id="hero-subtitle"></p>
@@ -72,7 +73,7 @@
     </section>
 
     <!-- Events Preview -->
-    <section class="section section-dark">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">Upcoming Events</h2>
             <div class="events-grid">
@@ -122,10 +123,10 @@
     </section>
 
     <!-- Sponsors Section -->
-    <section class="section section-dark">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">Our Sponsors</h2>
-            <p style="text-align: center; margin-bottom: 3rem; color: var(--white);">We thank our generous sponsors for supporting neuroscience research and education at Oxford.</p>
+            <p style="text-align: center; margin-bottom: 3rem; color: var(--black);">We thank our generous sponsors for supporting neuroscience research and education at Oxford.</p>
             <div class="sponsors-grid">
                 <div class="sponsor-card">
                     <div class="sponsor-placeholder">[SPONSOR LOGO 1]</div>
@@ -150,7 +151,9 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
     <script src="script.js"></script>
     <script src="typewriter.js"></script>
+    <script src="hero-neuron.js"></script>
 </body>
 </html>

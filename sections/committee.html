@@ -30,38 +30,7 @@
     <section id="committee" class="section" style="margin-top: 70px;">
         <div class="container">
             <h2 class="section-title">Committee</h2>
-            <div class="committee-grid">
-                <div class="committee-card">
-                    <h3>[CO-PRESIDENT]</h3>
-                    <p class="committee-name">Liubou Samson</p>
-                    <p class="committee-bio">Masters in Molecular and Cellular Biochemistry</p>
-                </div>
-                <div class="committee-card">
-                    <h3>[CO-PRESIDENT]</h3>
-                    <p class="committee-name">Yicheng Su</p>
-                    <p class="committee-bio">Masters in Molecular and Cellular Biochemistry</p>
-                </div>
-                <div class="committee-card">
-                    <h3>[SECRETARY]</h3>
-                    <p class="committee-name">Garry Cherepakhov</p>
-                    <p class="committee-bio">Masters in Molecular and Cellular Biochemistry</p>
-                </div>
-                <div class="committee-card">
-                    <h3>[TREASURER]</h3>
-                    <p class="committee-name">Ivan Pekar</p>
-                    <p class="committee-bio">Masters in Molecular and Cellular Biochemistry</p>
-                </div>
-                <div class="committee-card">
-                    <h3>[SOCIAL MEDIA OFFICER]</h3>
-                    <p class="committee-name">Victor Chan</p>
-                    <p class="committee-bio">DPhil Physiology, Anatomy and Genetics</p>
-                </div>
-                <div class="committee-card">
-                    <h3>[COMMUNICATIONS OFFICER]</h3>
-                    <p class="committee-name">David Proudlove</p>
-                    <p class="committee-bio">Masters in Molecular and Cellular Biochemistry</p>
-                </div>
-            </div>
+            <div class="committee-grid" id="committeeGrid"></div>
         </div>
     </section>
 
@@ -71,6 +40,58 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../utils/script.js"></script>
+    <script>
+        let allCommittees = [];
+
+        // Load all committee JSON files dynamically
+        async function loadCommittees() {
+            try {
+                // First, load the index.json to get list of all committee files
+                const indexResponse = await fetch('../committees/index.json');
+                const indexData = await indexResponse.json();
+                
+                // Load all committee files listed in index.json
+                const promises = indexData.committees.map(filename => 
+                    fetch(`../committees/${filename}`)
+                        .then(response => response.json())
+                        .catch(error => console.error(`Failed to load ${filename}:`, error))
+                );
+
+                const results = await Promise.all(promises);
+                allCommittees = results.filter(committee => committee !== undefined);
+                console.log('Loaded committees:', allCommittees);
+                renderCommittees();
+            } catch (error) {
+                console.error('Failed to load committees index:', error);
+            }
+        }
+
+        function renderCommittees() {
+            const grid = document.getElementById('committeeGrid');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+
+            allCommittees.forEach(committee => {
+                const card = document.createElement('div');
+                card.className = 'committee-card';
+                
+                card.innerHTML = `
+                    <img src="../assets/committee_photos/${committee.photo}" alt="${committee.name}" class="committee-portrait">
+                    <div class="committee-info">
+                        <h3>[${committee.role}]</h3>
+                        <p class="committee-name">${committee.name}</p>
+                        <p class="committee-bio">${committee.bio}</p>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Load committees when page loads
+        loadCommittees();
+    </script>
 </body>
 </html>

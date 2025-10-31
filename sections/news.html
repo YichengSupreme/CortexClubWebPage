@@ -31,32 +31,7 @@
         <div class="container">
             <h2 class="section-title">News</h2>
             <div class="news-content">
-                <div class="news-grid">
-                    <div class="news-card">
-                        <div class="news-date">NOV 10, 2024</div>
-                        <h3>Annual Neuroscience Symposium</h3>
-                        <p>Cortex Club hosted its annual symposium featuring leading researchers from across Oxford and beyond. Over 200 attendees gathered to discuss the latest breakthroughs in cognitive neuroscience and neurodegenerative research. Keynote speakers included Dr. James Watson and Dr. Sarah Chen, who presented innovative findings on neural plasticity.</p>
-                        <a href="#" class="news-link">Read More →</a>
-                    </div>
-                    <div class="news-card">
-                        <div class="news-date">OCT 28, 2024</div>
-                        <h3>New Research Publication</h3>
-                        <p>Members of Cortex Club published groundbreaking research on neural plasticity in Nature Neuroscience. The study reveals new insights into how the brain adapts to learning and injury. The research team, led by Dr. Emily Watson, has opened new avenues for therapeutic interventions.</p>
-                        <a href="#" class="news-link">Read More →</a>
-                    </div>
-                    <div class="news-card">
-                        <div class="news-date">OCT 15, 2024</div>
-                        <h3>Student Awards Ceremony</h3>
-                        <p>Congratulations to this year's recipients of the Cortex Club Excellence Awards. Three outstanding students were recognized for their innovative research contributions to the field of neuroscience. Awards were presented for Best Research Paper, Most Promising Young Researcher, and Outstanding Contribution to the Society.</p>
-                        <a href="#" class="news-link">Read More →</a>
-                    </div>
-                    <div class="news-card">
-                        <div class="news-date">SEP 30, 2024</div>
-                        <h3>International Collaboration</h3>
-                        <p>Cortex Club announces partnership with leading neuroscience institutions in Europe and North America. This collaboration will facilitate student exchanges, joint research projects, and shared access to cutting-edge laboratory facilities.</p>
-                        <a href="#" class="news-link">Read More →</a>
-                    </div>
-                </div>
+                <div class="news-grid" id="newsGrid"></div>
             </div>
         </div>
     </section>
@@ -67,6 +42,85 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../utils/script.js"></script>
+    <script>
+        let allNews = [];
+
+        // Format date from YYYY-MM-DD to "MON DD, YYYY"
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const month = months[date.getMonth()];
+            const day = date.getDate();
+            const year = date.getFullYear();
+            return `${month} ${day}, ${year}`;
+        }
+
+        // Load all news JSON files dynamically
+        async function loadNews() {
+            try {
+                // First, load the index.json to get list of all news files
+                const indexResponse = await fetch('../news/json/index.json');
+                const indexData = await indexResponse.json();
+                
+                // Load all news files listed in index.json
+                const promises = indexData.news.map(filename => 
+                    fetch(`../news/json/${filename}`)
+                        .then(response => response.json())
+                        .catch(error => console.error(`Failed to load ${filename}:`, error))
+                );
+
+                const results = await Promise.all(promises);
+                allNews = results.filter(news => news !== undefined);
+                
+                // Sort news by date (newest first)
+                allNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                console.log('Loaded news:', allNews);
+                renderNews();
+            } catch (error) {
+                console.error('Failed to load news index:', error);
+            }
+        }
+
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+
+            allNews.forEach(news => {
+                const card = document.createElement('div');
+                card.className = 'news-card';
+                
+                // Determine Read More link: 
+                // 1. If readmore field exists and is not null, link to HTML file in news/html/
+                // 2. Otherwise, if link exists and is not "#", use that (for external links)
+                // 3. Otherwise, don't show Read More button
+                let readMoreLink = null;
+                if (news.readmore && news.readmore !== null) {
+                    readMoreLink = `../news/html/${news.readmore}`;
+                } else if (news.link && news.link !== '#' && news.link !== null) {
+                    readMoreLink = news.link;
+                }
+                
+                const readMoreButton = readMoreLink 
+                    ? `<a href="${readMoreLink}" class="news-link">Read More →</a>`
+                    : '';
+                
+                card.innerHTML = `
+                    <div class="news-date">${formatDate(news.date)}</div>
+                    <h3>${news.title}</h3>
+                    <p>${news.description}</p>
+                    ${readMoreButton}
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Load news when page loads
+        loadNews();
+    </script>
 </body>
 </html>

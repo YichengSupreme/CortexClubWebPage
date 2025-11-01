@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Cortex Club</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Cortex<span class="brand-accent">Club</span></h1>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="committee.html">Committee</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="section" style="margin-top: 70px;">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-filters" id="galleryFilters">
+                <button class="gallery-filter-btn active" data-category="all">All</button>
+                <button class="gallery-filter-btn" data-category="event">Events</button>
+                <button class="gallery-filter-btn" data-category="social">Socials</button>
+                <button class="gallery-filter-btn" data-category="backstage">Backstage</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery images will be loaded dynamically from JSON -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Cortex Club, University of Oxford. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../utils/script.js"></script>
+    <script src="../utils/gallery.js"></script>
+</body>
+</html>
+

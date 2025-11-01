@@ -1,0 +1,51 @@
+{
+  "sponsors": [
+    {
+      "id": "dpag",
+      "tier": "gold",
+      "logo": "assets/sponser_logos/DPAG.png",
+      "description": "Department of Physiology, Anatomy & Genetics, University of Oxford"
+    },
+    {
+      "id": "bna",
+      "tier": "silver",
+      "logo": "assets/sponser_logos/BNA.png",
+      "description": "British Neuroscience Association"
+    },
+    {
+      "id": "pharmacology",
+      "tier": "bronze",
+      "logo": "assets/sponser_logos/Department of Pharmacology.png",
+      "description": "Department of Pharmacology, University of Oxford"
+    },
+    {
+      "id": "clinical-neuro",
+      "tier": "bronze",
+      "logo": "assets/sponser_logos/Department_of_Clinical_Neuroscience.png",
+      "description": "Department of Clinical Neuroscience, University of Oxford"
+    },
+    {
+      "id": "experimental-psych",
+      "tier": "bronze",
+      "logo": "assets/sponser_logos/Department_of_Experimental_Psychology.jpeg",
+      "description": "Department of Experimental Psychology, University of Oxford"
+    },
+    {
+      "id": "psychiatry",
+      "tier": "bronze",
+      "logo": "assets/sponser_logos/Department_of_Psychiatry.png",
+      "description": "Department of Psychiatry, University of Oxford"
+    }
+  ],
+  "config": {
+    "container_width": 1200,
+    "container_height": 800,
+    "tier_radii": {
+      "gold": 0.25,
+      "silver": 0.35,
+      "bronze": 0.45
+    },
+    "min_spacing": 180
+  }
+}
+

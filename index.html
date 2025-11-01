@@ -17,6 +17,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sections/events.html">Events</a></li>
                 <li><a href="sections/news.html">News</a></li>
+                <li><a href="sections/gallery.html">Gallery</a></li>
                 <li><a href="sections/committee.html">Committee</a></li>
                 <li><a href="sections/contact.html">Contact</a></li>
             </ul>
@@ -36,8 +37,8 @@
             <h2 class="hero-title" id="hero-title"></h2>
             <p class="hero-subtitle" id="hero-subtitle"></p>
             <div class="hero-buttons">
-                <a href="sections/events.html" class="btn btn-primary">Join Our Events</a>
-                <a href="sections/about.html" class="btn btn-secondary">Learn More</a>
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=G96VzPWXk0-0uv5ouFLPkYdYUCzqsrBGjoQtv3V5-bhURDFQUUYyWkMwQktPVkI1WUswMFRHR1FKRC4u" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Join Our Mailing List</a>
+                <a href="sections/events.html" class="btn btn-secondary">See All Events</a>
             </div>
         </div>
     </section>
@@ -112,24 +113,13 @@
     </section>
 
     <!-- Sponsors Section -->
-    <section class="section">
+    <section class="section" id="sponsors-section">
         <div class="container">
             <h2 class="section-title">Our Sponsors</h2>
-            <p style="text-align: center; margin-bottom: 3rem; color: var(--black);">We thank our generous sponsors for supporting neuroscience research and education at Oxford.</p>
-            <div class="sponsors-grid">
-                <div class="sponsor-card">
-                    <div class="sponsor-placeholder">[SPONSOR LOGO 1]</div>
-                </div>
-                <div class="sponsor-card">
-                    <div class="sponsor-placeholder">[SPONSOR LOGO 2]</div>
-                </div>
-                <div class="sponsor-card">
-                    <div class="sponsor-placeholder">[SPONSOR LOGO 3]</div>
-                </div>
-                <div class="sponsor-card">
-                    <div class="sponsor-placeholder">[SPONSOR LOGO 4]</div>
-                </div>
-            </div>
+            <p style="text-align: center; margin-bottom: 4rem; color: var(--black);">We thank our generous sponsors for supporting neuroscience research and education at Oxford.</p>
+        </div>
+        <div id="sponsors-list">
+            <!-- Sponsors will be loaded dynamically from JSON -->
         </div>
     </section>
 
@@ -145,5 +135,6 @@
     <script src="utils/typewriter.js"></script>
     <script src="utils/hero-neuron.js"></script>
     <script src="utils/news-preview.js"></script>
+    <script src="utils/sponsors.js"></script>
 </body>
 </html>

@@ -16,6 +16,7 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="news.html">News</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="committee.html">Committee</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -192,7 +193,9 @@
 
             const eventCard = document.createElement('div');
             eventCard.className = 'event-card';
-            eventCard.setAttribute('data-event', event.title.toLowerCase());
+            // Include both title and description in searchable data
+            const searchableText = `${event.title} ${event.description}`.toLowerCase();
+            eventCard.setAttribute('data-event', searchableText);
 
             eventCard.innerHTML = `
                 <div class="event-date">
@@ -201,7 +204,6 @@
                 </div>
                 <h3>${event.title}</h3>
                 <p>${event.description}</p>
-                <a href="#" class="event-link">Learn More →</a>
             `;
 
             return eventCard;
@@ -219,7 +221,9 @@
 
                 const eventCard = document.createElement('div');
                 eventCard.className = 'event-card';
-                eventCard.setAttribute('data-event', event.title.toLowerCase());
+                // Include both title and description in searchable data
+                const searchableText = `${event.title} ${event.description}`.toLowerCase();
+                eventCard.setAttribute('data-event', searchableText);
 
                 const yearHtml = showYear ? `<span class="date-year">${year}</span>` : '';
 
@@ -231,7 +235,6 @@
                     </div>
                     <h3>${event.title}</h3>
                     <p>${event.description}</p>
-                    <a href="#" class="event-link">Learn More →</a>
                 `;
 
                 grid.appendChild(eventCard);

@@ -794,12 +794,11 @@ body {
 
 .sponsor-silver .sponsor-logo-wrapper img {
     max-width: 100%;
-    width: 100%;
+    width: auto;
     height: auto;
     max-height: 180px;
     object-fit: contain;
     display: block;
-    margin: 0 auto;
 }
 
 .sponsor-silver .sponsor-name {

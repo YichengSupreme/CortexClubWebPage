@@ -800,18 +800,8 @@ body {
     display: block;
 }
 
-/* BNA logo adjustment - translate both image and caption */
-.sponsor-silver .sponsor-logo-wrapper img[alt="bna"] {
-    transform: translateX(75%);
-}
-
 .sponsor-silver .sponsor-name {
     font-size: 1rem;
-}
-
-/* BNA caption adjustment - target the sponsor item that contains the BNA image */
-.sponsor-item.sponsor-silver:has(.sponsor-logo-wrapper img[alt="bna"]) .sponsor-name {
-    transform: translateX(50%);
 }
 
 /* Bronze: Smaller logos */
@@ -848,12 +838,14 @@ body {
     .sponsor-tier-group.bronze-group > .sponsor-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
 }
 
 @media (max-width: 480px) {
     .sponsor-tier-group.bronze-group > .sponsor-grid {
         grid-template-columns: 1fr;
     }
+    
 }
 
 .footer {

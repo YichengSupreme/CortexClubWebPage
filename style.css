@@ -780,6 +780,7 @@ body {
     max-height: 250px;
     object-fit: contain;
     display: block;
+    margin: 0 auto;
 }
 
 .sponsor-gold .sponsor-name {
@@ -798,6 +799,7 @@ body {
     max-height: 180px;
     object-fit: contain;
     display: block;
+    margin: 0 auto;
 }
 
 .sponsor-silver .sponsor-name {
@@ -816,6 +818,7 @@ body {
     max-height: 120px;
     object-fit: contain;
     display: block;
+    margin: 0 auto;
 }
 
 .sponsor-bronze .sponsor-name {
@@ -1169,6 +1172,39 @@ body {
     font-size: 0.9rem;
     opacity: 0.9;
     letter-spacing: 1px;
+}
+
+/* Responsive gallery text */
+@media (max-width: 768px) {
+    .gallery-title {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .gallery-date {
+        font-size: 0.8rem;
+    }
+    
+    .gallery-overlay {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-title {
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.4rem;
+    }
+    
+    .gallery-date {
+        font-size: 0.75rem;
+    }
+    
+    .gallery-overlay {
+        padding: 1rem;
+    }
 }
 
 .news-card {

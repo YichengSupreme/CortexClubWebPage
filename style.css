@@ -775,12 +775,11 @@ body {
 
 .sponsor-gold .sponsor-logo-wrapper img {
     max-width: 100%;
-    width: 100%;
-    height: auto;
+    width: auto;
     max-height: 250px;
+    height: auto;
     object-fit: contain;
     display: block;
-    margin: 0 auto;
 }
 
 .sponsor-gold .sponsor-name {
@@ -794,15 +793,25 @@ body {
 
 .sponsor-silver .sponsor-logo-wrapper img {
     max-width: 100%;
-    width: auto;
     height: auto;
     max-height: 180px;
+    width: auto;
     object-fit: contain;
     display: block;
 }
 
+/* BNA logo adjustment - translate both image and caption */
+.sponsor-silver .sponsor-logo-wrapper img[alt="bna"] {
+    transform: translateX(75%);
+}
+
 .sponsor-silver .sponsor-name {
     font-size: 1rem;
+}
+
+/* BNA caption adjustment - target the sponsor item that contains the BNA image */
+.sponsor-item.sponsor-silver:has(.sponsor-logo-wrapper img[alt="bna"]) .sponsor-name {
+    transform: translateX(50%);
 }
 
 /* Bronze: Smaller logos */

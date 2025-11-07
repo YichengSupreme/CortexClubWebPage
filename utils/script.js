@@ -67,13 +67,3 @@ document.querySelectorAll('.feature, .event-card, .research-card').forEach(el =>
     observer.observe(el);
 });
 
-// Form submission handler
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
-        contactForm.reset();
-    });
-}
-

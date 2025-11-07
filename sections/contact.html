@@ -31,37 +31,39 @@
     <section class="section section-dark" style="margin-top: 70px;">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
+            <p style="text-align: center; color: var(--white); opacity: 0.8; max-width: 700px; margin: 0 auto 4rem; line-height: 1.8;">
+                Have questions about our events, research, or membership? We'd love to hear from you. 
+                Reach out via email and connect with us on social media!
+            </p>
+            <div class="contact-content" style="grid-template-columns: 1fr; max-width: 800px;">
                 <div class="contact-info">
                     <div class="contact-item">
                         <h3>[EMAIL]</h3>
-                        <p>cortex@dpag.ox.ac.uk</p>
+                        <p><a href="mailto:cortex@dpag.ox.ac.uk" style="color: var(--white); text-decoration: none; opacity: 1;"><strong>cortex@dpag.ox.ac.uk</strong></a></p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.6;">For general inquiries, event information, and membership questions</p>
                     </div>
                     <div class="contact-item">
-                        <h3>[LOCATION]</h3>
-                        <p>University of Oxford<br>Oxford, United Kingdom</p>
+                        <h3>[CORTEXCAST]</h3>
+                        <p style="margin-bottom: 1rem; opacity: 0.8;">Listen to our podcasts!</p>
+                        <div class="social-links">
+                            <a href="https://open.spotify.com/show/6BoktzxhbOVsw4UeJHtuiY" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><strong>Spotify</strong></a>
+                            <a href="https://podcasts.apple.com/us/podcast/cortexcast-a-neuroscience-podcast/id1467345364" target="_blank" rel="noopener noreferrer" aria-label="Podcasts"><strong>Podcasts</strong></a>
+                        </div>
                     </div>
                     <div class="contact-item">
                         <h3>[SOCIAL]</h3>
+                        <p style="margin-bottom: 1rem; opacity: 0.8;">Follow us for updates on events, research highlights, and neuroscience news!</p>
                         <div class="social-links">
-                            <a href="https://www.instagram.com/oxfordcortexclub/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
-                            <a href="https://www.linkedin.com/in/cortex-club-953615380/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                            <a href="https://www.instagram.com/oxfordcortexclub/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><strong>Instagram</strong></a>
+                            <a href="https://www.linkedin.com/in/cortex-club-953615380/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><strong>LinkedIn</strong></a>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <h3>[LOCATION]</h3>
+                        <p>Department of Physiology, Anatomy & Genetics (DPAG)<br>University of Oxford<br>Oxford, United Kingdom</p>
+                    </div>
+                  
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="user_name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="user_email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
-                    <p id="form-message" style="margin-top: 1rem; text-align: center; display: none;"></p>
-                </form>
             </div>
             
             <!-- Map Section -->
@@ -92,8 +94,6 @@
         </div>
     </footer>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="../utils/script.js"></script>
-    <script src="../utils/contact-form.js"></script>
 </body>
 </html>

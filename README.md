@@ -34,7 +34,7 @@ CortexWeb/
 
 To add a new event:
 
-1. Create a new JSON file in the `events/` folder (e.g., `event_9.json`)
+1. Create a new JSON file in the `events/` folder (e.g., `event_1.json`)
 2. Add the event data:
    ```json
    {
@@ -50,7 +50,7 @@ To add a new event:
      "events": [
        "event_1.json",
        "event_2.json",
-       "event_9.json"
+       "event_3.json"
      ]
    }
    ```
@@ -75,6 +75,9 @@ You can open `index.html` directly, but events won't load due to CORS restrictio
 ### GitHub Pages
 
 Once pushed to GitHub Pages, all features work perfectly including dynamic event loading!
+
+### Pointer
+- use https://tinypng.com/ to compress images
 
 ## License
 

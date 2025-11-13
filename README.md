@@ -1,34 +1,14 @@
 # Cortex Club Website
 
-A modern, artistic black and white website for Cortex Club - Oxford University's Neuroscience Society.
+A modern, artistic website for Cortex Club - Oxford University's Neuroscience Society.
 
 ## Features
 
-- 🎨 **Artistic Minimalism** - Black and white design with typewriter aesthetic
+- 🎨 **Artistic Minimalism** - Dark blue and white design with typewriter aesthetic
 - 📱 **Fully Responsive** - Auto-adapts to all screen sizes
 - ⚡ **Typewriter Animation** - Dynamic hero text with blinking cursor
 - 🎯 **Modular Structure** - Separate subpages for each section
 - 📅 **Dynamic Events** - JSON-based event management system
-
-## Structure
-
-```
-CortexWeb/
-├── index.html              # Main landing page with previews
-├── sections/               # Individual subpages
-│   ├── about.html
-│   ├── events.html
-│   ├── news.html
-│   ├── committee.html
-│   └── contact.html
-├── events/                 # Event data (JSON files)
-│   ├── index.json          # Manifest listing all events
-│   └── event_*.json        # Individual event files
-├── style.css              # Responsive CSS
-├── script.js              # Navigation and interactions
-├── loader.js              # Typewriter effect
-└── README.md
-```
 
 ## Adding New Events
 
@@ -38,7 +18,6 @@ To add a new event:
 2. Add the event data:
    ```json
    {
-     "id": "unique-event-id",
      "title": "Event Title",
      "date": "2024-12-25",
      "description": "Event description here"
@@ -58,7 +37,7 @@ To add a new event:
 
 ## Getting Started
 
-### Quick Start (Local Testing)
+### Local Testing
 
 Run the included server script:
 

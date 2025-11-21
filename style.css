@@ -1240,6 +1240,7 @@ body {
     color: var(--black);
     line-height: 1.8;
     margin-bottom: 1.5rem;
+    white-space: pre-line;
 }
 
 .news-link {

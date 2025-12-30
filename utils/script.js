@@ -7,10 +7,25 @@ navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
 });
 
+// Dropdown toggle for mobile
+const navDropdown = document.querySelector('.nav-dropdown');
+if (navDropdown) {
+    const dropdownToggle = navDropdown.querySelector('a:first-child');
+    
+    dropdownToggle.addEventListener('click', (e) => {
+        // Only toggle on mobile (when menu is in vertical mode)
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            navDropdown.classList.toggle('active');
+        }
+    });
+}
+
 // Close menu when clicking on a link
 const navLinks = document.querySelectorAll('.nav-menu a');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
+        // Close the mobile menu when any link is clicked
         navMenu.classList.remove('active');
         navToggle.classList.remove('active');
     });

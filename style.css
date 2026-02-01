@@ -51,7 +51,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 20px;
+    max-width: 100%;
+    margin: 0;
+    padding: 1.5rem 0;
+}
+
+.nav-brand {
+    position: static;
+    left: auto;
+    margin-left: 5%;
+    padding-left: 3rem;
 }
 
 .nav-brand h1 {
@@ -71,6 +80,9 @@ body {
     display: flex;
     list-style: none;
     gap: 3rem;
+    margin-left: auto;
+    margin-right: 5%;
+    padding-right: 3rem;
 }
 
 .nav-menu a {
@@ -708,211 +720,196 @@ body {
 }
 
 /* Content wrapper inside tier group - matches .container width */
-.sponsor-tier-title,
 .sponsor-tier-group > .sponsor-grid {
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: calc(20px + 2rem); /* Container padding (20px) + section-title padding (2rem) */
+    padding-left: calc(20px + 2rem);
     padding-right: 20px;
     box-sizing: border-box;
 }
 
-/* Tier titles - on their own line, above logos, left-aligned with "Our Sponsors" */
+/* Remove tier titles - badges on cards instead */
 .sponsor-tier-title {
-    font-size: 1.8rem;
-    font-weight: normal;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 3rem;
-    color: var(--black);
-    text-decoration: underline;
-    text-align: left;
+    display: none;
 }
 
-/* Shimmer animation for hover effects */
-@keyframes shimmer {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 0%; }
-}
-
-/* Gold tier - full-width band */
-.sponsor-tier-group.gold-group {
-    background: white;
-    transition: background 0.3s ease;
-}
-
-.sponsor-tier-group.gold-group:hover {
-    background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.05) 50%, transparent 100%);
-    background-size: 200% 100%;
-    animation: shimmer 6s linear infinite;
-}
-
-.sponsor-tier-group.gold-group > .sponsor-grid {
+/* All tiers use same grid - 3 per row */
+.sponsor-tier-group > .sponsor-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
 }
 
-/* Silver tier - full-width band */
-.sponsor-tier-group.silver-group {
-    background: white;
-    transition: background 0.3s ease;
-}
-
-.sponsor-tier-group.silver-group:hover {
-    background: linear-gradient(90deg, transparent 0%, rgba(180,180,180,0.05) 50%, transparent 100%);
-    background-size: 200% 100%;
-    animation: shimmer 6s linear infinite;
-}
-
-.sponsor-tier-group.silver-group > .sponsor-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-/* Bronze tier - full-width band */
-.sponsor-tier-group.bronze-group {
-    background: white;
-    transition: background 0.3s ease;
-}
-
-.sponsor-tier-group.bronze-group:hover {
-    background: linear-gradient(90deg, transparent 0%, rgba(205,127,50,0.05) 50%, transparent 100%);
-    background-size: 200% 100%;
-    animation: shimmer 6s linear infinite;
-}
-
-.sponsor-tier-group.bronze-group > .sponsor-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-/* Individual sponsor item (logo on top, text below) */
+/* Card-based sponsor item */
 .sponsor-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    position: relative;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 8px;
     padding: 1.5rem;
     width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-.sponsor-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 1rem;
-    width: 100%;
-}
-
-.sponsor-name {
-    font-size: 1rem;
-    font-weight: normal;
-    color: var(--black);
-    line-height: 1.4;
-}
-
-.sponsor-logo-wrapper {
+    aspect-ratio: 4 / 3;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.sponsor-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 33, 71, 0.2);
+}
+
+/* Tier badge in top left */
+.sponsor-tier-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--black);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    background: var(--white);
+    border: 1px solid var(--black);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    z-index: 10;
+}
+
+/* Gold badge - metallic with texture */
+.sponsor-gold:hover .sponsor-tier-badge {
+    background: linear-gradient(135deg, #f4d03f 0%, #d4af37 50%, #b8860b 100%);
+    color: var(--white);
+    border-color: #d4af37;
+}
+
+.sponsor-gold:hover .sponsor-tier-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.08) 0px,
+            rgba(255,255,255,0.0) 2px,
+            rgba(0,0,0,0.06) 4px
+        );
+    opacity: 0.35;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Silver badge - metallic with texture */
+.sponsor-silver:hover .sponsor-tier-badge {
+    background: linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 50%, #a8a8a8 100%);
+    color: var(--black);
+    border-color: #c0c0c0;
+}
+
+.sponsor-silver:hover .sponsor-tier-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.12) 0px,
+            rgba(255,255,255,0.0) 2px,
+            rgba(0,0,0,0.04) 4px
+        );
+    opacity: 0.4;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Bronze badge - metallic with texture */
+.sponsor-bronze:hover .sponsor-tier-badge {
+    background: linear-gradient(135deg, #cd7f32 0%, #b87333 50%, #8b4513 100%);
+    color: var(--white);
+    border-color: #cd7f32;
+}
+
+.sponsor-bronze:hover .sponsor-tier-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.06) 0px,
+            rgba(255,255,255,0.0) 2px,
+            rgba(0,0,0,0.08) 4px
+        );
+    opacity: 0.3;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Logo wrapper - uniform card with fixed aspect ratio */
+.sponsor-logo-wrapper {
     width: 100%;
-    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
-/* Gold: Full width, larger logos */
-.sponsor-gold .sponsor-logo-wrapper {
-    min-height: 250px;
-}
-
-.sponsor-gold .sponsor-logo-wrapper img {
+/* Logo images - grayscale by default, color on hover */
+.sponsor-logo-wrapper img {
     max-width: 100%;
+    max-height: 100%;
     width: auto;
-    max-height: 250px;
     height: auto;
     object-fit: contain;
     display: block;
+    filter: grayscale(100%) brightness(0.9);
+    transition: filter 0.4s ease;
 }
 
-.sponsor-gold .sponsor-name {
-    font-size: 1.2rem;
-}
-
-/* Silver: Medium size logos */
-.sponsor-silver .sponsor-logo-wrapper {
-    min-height: 180px;
-}
-
-.sponsor-silver .sponsor-logo-wrapper img {
-    max-width: 100%;
-    height: auto;
-    max-height: 180px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-
-.sponsor-silver .sponsor-name {
-    font-size: 1rem;
-}
-
-/* Bronze: Smaller logos */
-.sponsor-bronze .sponsor-logo-wrapper {
-    min-height: 120px;
-}
-
-.sponsor-bronze .sponsor-logo-wrapper img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    max-height: 120px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
-
-.sponsor-bronze .sponsor-name {
-    font-size: 0.9rem;
+.sponsor-item:hover .sponsor-logo-wrapper img {
+    filter: grayscale(0%) brightness(1);
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    .sponsor-tier-group.bronze-group > .sponsor-grid {
+    .sponsor-tier-group > .sponsor-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .sponsor-tier-group.silver-group > .sponsor-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .sponsor-tier-group.bronze-group > .sponsor-grid {
+    .sponsor-tier-group > .sponsor-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    .sponsor-item {
+        aspect-ratio: 3 / 2;
+    }
 }
 
 @media (max-width: 480px) {
-    .sponsor-tier-group.bronze-group > .sponsor-grid {
+    .sponsor-tier-group > .sponsor-grid {
         grid-template-columns: 1fr;
     }
     
+    .sponsor-item {
+        padding: 1.5rem;
+    }
+    
+    .sponsor-tier-badge {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.6rem;
+    }
 }
 
 .footer {
